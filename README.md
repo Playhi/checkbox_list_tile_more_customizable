@@ -1,6 +1,6 @@
 # checkbox_list_tile_more_customizable
 
-A new Flutter project.
+A CheckboxListTile with more customizable details. 
 
 ## Getting Started
 
