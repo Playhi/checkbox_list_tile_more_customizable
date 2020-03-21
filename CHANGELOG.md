@@ -1,3 +1,8 @@
-## [0.0.1] - TODO: Add release date.
+## [1.0.0] - 2020-03-21
 
-* TODO: Describe initial release.
+* This project is a modified version of Flutter CheckboxListTile, 
+and provides more customizable functions, 
+with these functions, 
+you can set the horizontalTitleGap, minVerticalPadding, 
+minLeadingWidth, and contentPadding.
+
