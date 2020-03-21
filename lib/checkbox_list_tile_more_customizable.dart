@@ -1,13 +1,18 @@
 // Copyright 2014 The Flutter Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE_FLUTTER file.
+
+// This file has been modified based on The Flutter Authors' version,
+// which can be found in https://github.com/Playhi/checkbox_list_tile_more_customizable/raw/c52c4df5b7eb31ee36defdba095d6231a4385829/lib/checkbox_list_tile_more_customizable.dart,
+// which has been used as the initial version of this file.
+
+// Copyright 2020 The Checkbox List Tile More Customizable Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import 'checkbox.dart';
-import 'list_tile.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:list_tile_more_customizable/list_tile_more_customizable.dart';
 
 // Examples can assume:
 // void setState(VoidCallback fn) { }
@@ -34,7 +39,7 @@ import 'theme_data.dart';
 /// [secondary] widget is placed on the opposite side. This maps to the
 /// [ListTile.leading] and [ListTile.trailing] properties of [ListTile].
 ///
-/// To show the [CheckboxListTile] as disabled, pass null as the [onChanged]
+/// To show the [CheckboxListTileMoreCustomizable] as disabled, pass null as the [onChanged]
 /// callback.
 ///
 /// {@tool sample --template=stateful_widget_scaffold_center}
@@ -237,7 +242,7 @@ import 'theme_data.dart';
 ///  * [RadioListTile], a similar widget for radio buttons.
 ///  * [SwitchListTile], a similar widget for switches.
 ///  * [ListTile] and [Checkbox], the widgets from which this widget is made.
-class CheckboxListTile extends StatelessWidget {
+class CheckboxListTileMoreCustomizable extends StatelessWidget {
   /// Creates a combination of a list tile and a checkbox.
   ///
   /// The checkbox tile itself does not maintain any state. Instead, when the
@@ -253,7 +258,7 @@ class CheckboxListTile extends StatelessWidget {
   ///
   /// * [onChanged], which is called when the value of the checkbox should
   ///   change. It can be set to null to disable the checkbox.
-  const CheckboxListTile({
+  const CheckboxListTileMoreCustomizable({
     Key key,
     @required this.value,
     @required this.onChanged,
@@ -265,12 +270,22 @@ class CheckboxListTile extends StatelessWidget {
     this.dense,
     this.secondary,
     this.selected = false,
-    this.controlAffinity = ListTileControlAffinity.platform,
-  }) : assert(value != null),
+    this.controlAffinity = ListTileMoreCustomizableControlAffinity.platform,
+    this.horizontalTitleGap =
+        ListTileMoreCustomizableDefaultValue.horizontalTitleGap,
+    this.contentPadding = ListTileMoreCustomizableDefaultValue.contentPadding,
+    this.minVerticalPadding =
+        ListTileMoreCustomizableDefaultValue.minVerticalPadding,
+    this.minLeadingWidth = ListTileMoreCustomizableDefaultValue.minLeadingWidth,
+  })  : assert(value != null),
         assert(isThreeLine != null),
         assert(!isThreeLine || subtitle != null),
         assert(selected != null),
         assert(controlAffinity != null),
+        assert(horizontalTitleGap != null),
+        assert(contentPadding != null),
+        assert(minVerticalPadding != null),
+        assert(minLeadingWidth != null),
         super(key: key);
 
   /// Whether this checkbox is checked.
@@ -348,8 +363,23 @@ class CheckboxListTile extends StatelessWidget {
   /// Normally, this property is left to its default value, false.
   final bool selected;
 
+  /// The horizontal gap between the titles and the leading/trailing widgets.
+  final double horizontalTitleGap;
+
+  /// The tile's internal padding.
+  ///
+  /// Insets a [ListTileMoreCustomizable]'s contents: its [leading], [title], [subtitle],
+  /// and [trailing] widgets.
+  final EdgeInsetsGeometry contentPadding;
+
+  /// The minimum padding on the top and bottom of the title and subtitle widgets.
+  final double minVerticalPadding;
+
+  /// The minimum leading width.
+  final double minLeadingWidth;
+
   /// Where to place the control relative to the text.
-  final ListTileControlAffinity controlAffinity;
+  final ListTileMoreCustomizableControlAffinity controlAffinity;
 
   @override
   Widget build(BuildContext context) {
@@ -362,20 +392,20 @@ class CheckboxListTile extends StatelessWidget {
     );
     Widget leading, trailing;
     switch (controlAffinity) {
-      case ListTileControlAffinity.leading:
+      case ListTileMoreCustomizableControlAffinity.leading:
         leading = control;
         trailing = secondary;
         break;
-      case ListTileControlAffinity.trailing:
-      case ListTileControlAffinity.platform:
+      case ListTileMoreCustomizableControlAffinity.trailing:
+      case ListTileMoreCustomizableControlAffinity.platform:
         leading = secondary;
         trailing = control;
         break;
     }
     return MergeSemantics(
-      child: ListTileTheme.merge(
+      child: ListTileMoreCustomizableTheme.merge(
         selectedColor: activeColor ?? Theme.of(context).accentColor,
-        child: ListTile(
+        child: ListTileMoreCustomizable(
           leading: leading,
           title: title,
           subtitle: subtitle,
@@ -383,8 +413,16 @@ class CheckboxListTile extends StatelessWidget {
           isThreeLine: isThreeLine,
           dense: dense,
           enabled: onChanged != null,
-          onTap: onChanged != null ? () { onChanged(!value); } : null,
+          onTap: onChanged != null
+              ? (_) {
+                  onChanged(!value);
+                }
+              : null,
           selected: selected,
+          horizontalTitleGap: horizontalTitleGap,
+          contentPadding: contentPadding,
+          minVerticalPadding: minVerticalPadding,
+          minLeadingWidth: minLeadingWidth,
         ),
       ),
     );
