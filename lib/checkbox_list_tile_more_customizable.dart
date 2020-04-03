@@ -14,6 +14,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:list_tile_more_customizable/list_tile_more_customizable.dart';
 
+export 'package:list_tile_more_customizable/list_tile_more_customizable.dart';
+
 // Examples can assume:
 // void setState(VoidCallback fn) { }
 
