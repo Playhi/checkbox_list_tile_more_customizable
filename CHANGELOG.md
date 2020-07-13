@@ -1,3 +1,18 @@
+## [2.0.0] - 2020-07-13
+
+* From this version, the dependency 
+[list_tile_more_customizable](https://pub.dev/packages/list_tile_more_customizable)
+ will not all exported, and with this version,
+ only `ListTileMoreCustomizableDefaultValue` and `ListTileMoreCustomizableControlAffinity`
+ has been exported.
+* Due to the new version may cause some problems when using
+ [list_tile_more_customizable](https://pub.dev/packages/list_tile_more_customizable)
+ directly from `checkbox_list_tile_more_customizable` in the past, the major version has jumped to `2.X.Y`.
+ If you want to upgrade `checkbox_list_tile_more_customizable` to 2.0.0+,
+ sometimes you may need to import 
+ [list_tile_more_customizable](https://pub.dev/packages/list_tile_more_customizable)
+ independently for this upgrade.
+
 ## [1.0.2] - 2020-04-03
 
 * Export dependency list_tile_more_customizable so the value of

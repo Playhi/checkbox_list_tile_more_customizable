@@ -1,6 +1,6 @@
 name: checkbox_list_tile_more_customizable
 description: A CheckboxListTile with more customizable details, which provides more customizable functions, based on the traditional flutter CheckboxListTile.
-version: 1.0.2
+version: 2.0.0
 homepage: https://github.com/Playhi/checkbox_list_tile_more_customizable
 
 environment:
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  list_tile_more_customizable: ^1.2.2
+  list_tile_more_customizable: ^1.3.0
 
 dev_dependencies:
   flutter_test:
